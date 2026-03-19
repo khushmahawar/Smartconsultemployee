@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Join SmartConsult</title>
+  <link rel="stylesheet" href="career.css">
+  <link rel="icon" type="image/png" href="../logo.png">
+</head>
+
+<body>
+
+<div class="box">
+  <h2>Join SmartConsult 🚀</h2>
+
+  <!-- Job Application Form -->
+  <div id="errorBox" class="error-box">
+    <p id="errorMsg">You have already applied ❌</p>
+  </div>
+
+  <form id="jobForm">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="text" id="college" placeholder="College/University" required>
+    <input type="number" id="cpi" step="0.01" placeholder="CPI/Percentage" required>
+    <input type="tel" id="phone" placeholder="Phone Number" required>
+    
+    <button type="submit">Apply Now</button>
+  </form>
+<div id="loader" class="loader">
+  <div class="spinner"></div>
+  <p>Submitting your application...</p>
+</div>
+  <!-- Login Redirect -->
+  <button class="login-btn" onclick="goToLogin()">
+    Already working with us? Login
+  </button>
+</div>
+<script src="career.js"></script>
+</body>
+</html>

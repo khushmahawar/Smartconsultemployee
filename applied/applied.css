@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #0a0f1c, #000);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* 🔥 fix overflow issue */
+  padding: 20px;
+}
+
+/* Main Box */
+.container {
+  text-align: center;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 30px rgba(0,150,255,0.2);
+  animation: fadeIn 1.2s ease-in-out;
+  max-width: 500px;   /* 🔥 important */
+  width: 100%;
+}
+
+/* Check Animation */
+.checkmark {
+  font-size: clamp(50px, 8vw, 80px); /* 🔥 responsive */
+  color: #00ffae;
+  animation: pop 0.6s ease;
+}
+
+/* Heading */
+h1 {
+  margin-top: 10px;
+  font-size: clamp(24px, 5vw, 40px); /* 🔥 responsive */
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Text */
+p {
+  margin-top: 15px;
+  font-size: clamp(14px, 3.5vw, 22px); /* 🔥 responsive */
+  color: #aaa;
+  line-height: 1.6;
+}
+
+/* Button */
+button {
+  margin-top: 25px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: white;
+  font-size: clamp(14px, 3vw, 22px); /* 🔥 responsive */
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+  max-width: 250px;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0,150,255,0.5);
+}
+
+/* Animations */
+@keyframes pop {
+  0% { transform: scale(0); }
+  100% { transform: scale(1.2); }
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* 📱 Extra Mobile Optimization */
+@media (max-width: 480px) {
+  .container {
+    padding: 25px;
+  }
+
+  button {
+    width: 100%;
+  }
+}

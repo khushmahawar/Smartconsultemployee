@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="../logo.png">
+  <meta charset="UTF-8">
+  <title>SmartConsult Login</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #0a0f1c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+    }
+
+    .box {
+      background: rgba(255,255,255,0.05);
+      padding: 30px;
+      border-radius: 10px;
+      width: 30%;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,150,255,0.3);
+    }
+    .box h2 {
+      font-size: 50px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: larger;
+    }
+
+    button {
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      border: none;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>Employee Login</h2>
+
+  <input type="email" id="email" placeholder="Enter Email">
+  <input type="password" id="password" placeholder="Enter Password">
+
+  <button onclick="login()">Login</button>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
+
+const firebaseConfig = {
+   apiKey: "AIzaSyCRt_nj4Svk4yfZBeQ8jcSr_VQXWrhTqkY",
+    authDomain: "smartconsult-employee.firebaseapp.com",
+    projectId: "smartconsult-employee",
+    storageBucket: "smartconsult-employee.firebasestorage.app",
+    messagingSenderId: "595014566518",
+    appId: "1:595014566518:web:e3ed37368e5026fd75d557",
+    measurementId: "G-B82NX4VPZR"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+window.login = function () {
+  signInWithEmailAndPassword(auth, email.value, password.value)
+    .then(() => {
+      alert("Login Success 🚀");
+      window.location.href = "dashboard.html";
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+};
+</script>
+
+</body>
+</html>
