@@ -1,5 +1,5 @@
 function goToLogin() {
-  window.location.href = "/login";
+  window.location.href = "/login/index.html";
 }
 
 document.getElementById("jobForm").addEventListener("submit", function(e){
@@ -36,7 +36,7 @@ document.getElementById("jobForm").addEventListener("submit", function(e){
     document.getElementById("jobForm").reset();
 
   } else {
-    window.location.href = "/applied";
+    window.location.href = "/applied/index.html";
   }
 })
 });
