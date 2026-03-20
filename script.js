@@ -29,7 +29,7 @@ function goToLogin() {
   window.location.href = "/login";
 }
 // Set deadline (change date as needed)
-const deadline = new Date().getTime() + (14 * 24 * 60 * 60 * 1000); // 14 days from now
+const deadline = new Date("2026-04-05T23:59:59").getTime();
 
 function updateTimer() {
   const now = new Date().getTime();
@@ -53,4 +53,3 @@ function updateTimer() {
 
 updateTimer();
 setInterval(updateTimer, 1000);
-
