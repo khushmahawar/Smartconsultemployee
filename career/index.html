@@ -2,39 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Join SmartConsult</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join the Mission | SmartConsult</title>
   <link rel="stylesheet" href="/career/career.css">
   <link rel="icon" type="image/png" href="../logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 
-<body>
+<body class="single-screen">
+  <canvas id="bg-canvas"></canvas>
+  
+  <nav class="glass-nav">
+    <div class="logo">
+      <img src="../logo.png" alt="SmartConsult">
+      <span>SmartConsult</span>
+    </div>
+  </nav>
 
-<div class="box">
-  <h2>Join SmartConsult 🚀</h2>
+  <main class="viewport">
+    <div class="split-layout">
+      <!-- Left: Content -->
+      <div class="content-side">
+        <h1 class="split-text">Transcend <br><span class="gradient-text">Limits</span></h1>
+        <p class="tagline">The next evolution of consulting starts with you. Join our neural network of visionaries.</p>
+        
+        <div class="feature-pills">
+          <span class="pill">AI First</span>
+          <span class="pill">Remote DNA</span>
+          <span class="pill">Equity++</span>
+        </div>
+      </div>
 
-  <!-- Job Application Form -->
-  <div id="errorBox" class="error-box">
-    <p id="errorMsg">You have already applied ❌</p>
-  </div>
+      <!-- Right: Form -->
+      <div class="form-side">
+        <div class="glass-box box">
+          <h2 class="form-header">Initialize Application</h2>
+          
+          <div id="errorBox" class="error-box">
+            <p id="errorMsg">Already on file ❌</p>
+          </div>
 
-  <form id="jobForm">
-    <input type="text" id="name" placeholder="Full Name" required>
-    <input type="email" id="email" placeholder="Email" required>
-    <input type="text" id="college" placeholder="College/University" required>
-    <input type="number" id="cpi" step="0.01" placeholder="CPI/Percentage" required>
-    <input type="tel" id="phone" placeholder="Phone Number" required>
-    
-    <button type="submit">Apply Now</button>
-  </form>
-<div id="loader" class="loader">
-  <div class="spinner"></div>
-  <p>Submitting your application...</p>
-</div>
-  <!-- Login Redirect -->
-  <button class="login-btn" onclick="goToLogin()">
-    Already working with us? Login
-  </button>
-</div>
-<script src="career/career.js"></script>
+          <form id="jobForm">
+            <div class="input-row">
+              <div class="input-field">
+                <input type="text" id="name" placeholder=" " required>
+                <label>Full Name</label>
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="input-field">
+                <input type="email" id="email" placeholder=" " required>
+                <label>Email</label>
+                
+              </div>
+            </div>
+            <div class="input-row split">
+              <div class="input-field">
+                <input type="text" id="college" placeholder=" " required>
+                <label>Institute</label>
+              </div>
+              <div class="input-field">
+                <input type="number" id="cpi" step="0.01" placeholder=" " required>
+                <label>CPI</label>
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="input-field">
+                <input type="tel" id="phone" placeholder=" " required>
+                <label>Phone</label>
+              </div>
+            </div>
+            
+            <button type="submit" class="cyber-btn">
+              <span>Submit</span>
+              <div class="btn-glitch"></div>
+            </button>
+          </form>
+
+          <div id="loader" class="loader">
+            <div class="scanner-wrap">
+              <div class="scanner"></div>
+            </div>
+            <p>Processing...</p>
+          </div>
+
+          <button class="minimal-btn" onclick="goToLogin()">
+            Already Working with Us? <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="minimal-footer">
+    <div class="status-indicator">
+      <span class="dot"></span>
+      <span>System: All Systems Nominal</span>
+    </div>
+  </footer>
+
+  <script src="career.js"></script>
 </body>
 </html>

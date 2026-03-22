@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Application Submitted</title>
-<link rel="icon" type="image/png" href="../logo.png">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/applied/applied.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transmission Success | SmartConsult</title>
+  <link rel="icon" type="image/png" href="../logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="applied.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
-<body>
-<div class="container">
-  <div class="checkmark">✔</div>
-  <h1>Application Submitted </h1>
-  
-  <p>
-    Thank you for applying to <b><a href="https://smartconsult.vercel.app" style="color: aqua;">SmartConsult</a></b>.<br>
-    We will review your application and share further details on your email 📩
-  </p>
 
-  <button onclick="goHome()">Go to Home</button>
-</div>
+<body class="success-screen">
+  <div class="glow-overlay"></div>
+  <canvas id="success-canvas"></canvas>
 
-<script>
-function goHome(){
-  window.location.href = "/"; // change if needed
-}
-</script>
+  <div class="container glass-box">
+    <div class="success-icon-wrap">
+      <div class="pulse-ring"></div>
+      <div class="checkmark">✔</div>
+    </div>
+    
+    <h1 class="reveal-text">Process <span class="gradient-text">Complete</span></h1>
+    
+    <div class="status-badge">Application Submitted</div>
+    
+    <p class="tagline">
+      Application successfully uploaded to <b>SmartConsult</b><br>
+      Our visionaries will analyze your profile and transmit further instructions to your email 📩
+    </p>
 
+    <div class="btn-wrap">
+      <button class="cyber-btn" onclick="goHome()">
+        <span>Home</span>
+        <div class="btn-shine"></div>
+      </button>
+    </div>
+  </div>
+
+  <script src="applied.js"></script>
+  <script>
+    function goHome(){
+      window.location.href = "/";
+    }
+  </script>
 </body>
 </html>
