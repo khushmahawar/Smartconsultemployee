@@ -7,6 +7,7 @@
   <title>SmartConsult Login</title>
 
   <style>
+    *, *::before, *::after { box-sizing: border-box; }
     html {
       font-size: 100%;
       -webkit-text-size-adjust: 100%;
@@ -15,7 +16,7 @@
     }
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background: #0a0f1c;
       display: flex;
       justify-content: center;
@@ -24,46 +25,69 @@
       min-height: 100dvh;
       padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
       color: white;
-      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
     }
 
     .box {
       background: rgba(255,255,255,0.05);
-      padding: clamp(1.25rem, 4vw, 30px);
-      border-radius: 10px;
+      padding: clamp(1.25rem, 5vw, 2rem);
+      border-radius: 12px;
       width: min(420px, 100%);
       max-width: 100%;
       text-align: center;
       box-shadow: 0 0 20px rgba(0,150,255,0.3);
     }
     .box h2 {
-      font-size: clamp(1.75rem, 5vw + 0.5rem, 3rem);
+      font-size: clamp(1.5rem, 5vw + 0.5rem, 2.25rem);
+      margin: 0 0 1rem;
+      line-height: 1.2;
     }
     input {
       width: 100%;
-      padding: 10px;
-      margin: 10px 0;
+      padding: 0.75rem 0.875rem;
+      margin: 0.5rem 0;
       border: none;
-      border-radius: 5px;
-      font-size: larger;
+      border-radius: 8px;
+      font-size: 16px;
+      min-height: 48px;
+      -webkit-appearance: none;
+      appearance: none;
     }
 
     button {
-      margin-top: 10px;
+      margin-top: 0.75rem;
       width: 100%;
-      padding: 12px;
+      padding: 0.75rem 1rem;
       min-height: 48px;
       background: linear-gradient(90deg, #00c6ff, #0072ff);
       border: none;
       color: white;
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-size: clamp(1rem, 2.5vw, 1.125rem);
       font-weight: bold;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
     }
 
     button:hover {
       opacity: 0.9;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    @media (max-width: 360px) {
+      .box { padding: 1rem; }
+    }
+
+    @media (max-height: 480px) and (orientation: landscape) {
+      body { align-items: flex-start; padding-top: max(0.5rem, env(safe-area-inset-top)); }
+      .box { margin-block: 0.5rem; }
+      input { min-height: 44px; margin: 0.35rem 0; }
+    }
+
+    @media (min-width: 600px) {
+      .box { padding: 2rem 2.25rem; }
     }
   </style>
 </head>

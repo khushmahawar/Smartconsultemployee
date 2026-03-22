@@ -26,11 +26,15 @@ body {
   font-family: 'Space Grotesk', sans-serif;
   background: var(--bg);
   color: var(--text);
-  overflow: hidden;
-  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+  -webkit-overflow-scrolling: touch;
 }
 
 #success-canvas {
@@ -51,12 +55,14 @@ body {
 .container {
   background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   border: 1px solid var(--glass-border);
-  padding: 4rem;
-  border-radius: 3rem;
+  padding: clamp(1.5rem, 6vw, 4rem);
+  border-radius: clamp(1.25rem, 4vw, 3rem);
   text-align: center;
-  max-width: 600px;
-  width: 90%;
+  width: min(100%, 600px);
+  max-width: 100%;
+  margin: 0 auto;
   box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8), var(--success-glow);
   position: relative;
   z-index: 10;
@@ -64,9 +70,9 @@ body {
 
 .success-icon-wrap {
   position: relative;
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 2.5rem;
+  width: clamp(80px, 22vw, 120px);
+  height: clamp(80px, 22vw, 120px);
+  margin: 0 auto clamp(1.25rem, 4vw, 2.5rem);
 }
 
 .pulse-ring {
@@ -91,16 +97,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 8vw, 3.5rem);
   color: #000;
   box-shadow: 0 0 40px rgba(0, 255, 174, 0.5);
 }
 
 h1 {
-  font-size: 3.5rem;
+  font-size: clamp(1.75rem, 5vw + 0.75rem, 3.5rem);
   font-weight: 700;
-  letter-spacing: -2px;
+  letter-spacing: clamp(-2px, -0.02em, -1px);
   margin-bottom: 1rem;
+  line-height: 1.1;
 }
 
 .gradient-text {
@@ -112,49 +119,65 @@ h1 {
 
 .status-badge {
   display: inline-block;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1.25rem;
   background: rgba(0, 255, 174, 0.1);
   border: 1px solid rgba(0, 255, 174, 0.2);
   color: var(--primary);
   border-radius: 100px;
-  font-size: 0.8rem;
+  font-size: clamp(0.65rem, 2vw, 0.8rem);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+  margin-bottom: clamp(1rem, 3vw, 2rem);
 }
 
 .tagline {
   color: var(--text-dim);
-  line-height: 1.8;
-  font-size: 1.1rem;
-  margin-bottom: 3rem;
+  line-height: 1.7;
+  font-size: clamp(0.9375rem, 0.35rem + 1.5vw, 1.1rem);
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+  max-width: 42ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tagline b { color: var(--text); }
 
+.btn-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .cyber-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 320px;
   background: linear-gradient(135deg, #00ffae, #00f2fe);
   color: black;
   border: none;
-  padding: 1.25rem 3rem;
+  padding: 1rem 1.5rem;
+  min-height: 52px;
   border-radius: 1rem;
   font-weight: 800;
-  font-size: 1rem;
+  font-size: clamp(0.95rem, 2vw, 1rem);
   cursor: pointer;
   position: relative;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0,255,174,0.4);
   transition: 0.3s;
-}
-.cyber-btn {
-  justify-content: center;
-  margin-top: 20px;
+  margin-top: 0.5rem;
 }
 
 .cyber-btn:hover {
-  transform: scale(1.08);
+  transform: scale(1.04);
   box-shadow: 0 0 40px rgba(0,255,174,0.8);
+}
+
+@media (hover: none) {
+  .cyber-btn:hover { transform: none; }
 }
 
 .btn-shine {
@@ -169,21 +192,30 @@ h1 {
 
 .cyber-btn:hover .btn-shine { left: 100%; }
 
-/* Mobile */
-@media (max-width: 600px) {
-  .container { padding: 3rem 1.5rem; }
-  h1 { font-size: 2.5rem; }
-  .tagline { font-size: 1rem; }
+@media (max-width: 480px) {
+  .cyber-btn {
+    max-width: none;
+  }
 }
-.btn-wrap {
-  display: flex;
-  justify-content: center;
+
+@media (max-height: 500px) and (orientation: landscape) {
+  body {
+    align-items: flex-start;
+    padding-top: max(0.75rem, env(safe-area-inset-top));
+  }
+  .container {
+    padding: 1rem 1.25rem;
+    margin-block: 0.5rem;
+  }
+  h1 { font-size: clamp(1.5rem, 4vw, 2rem); }
+  .success-icon-wrap {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 0.75rem;
+  }
+  .tagline { margin-bottom: 1rem; font-size: 0.9rem; }
 }
-.cyber-btn {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  position: relative !important;
-  z-index: 9999 !important;
-  margin-top: 20px;
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-ring { animation: none !important; }
 }
