@@ -1,4 +1,3 @@
-@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
 
 :root {
     --bg-dark: #09090b; /* Deeper, richer black */
@@ -10,7 +9,7 @@
     --glass-bg: rgba(255, 255, 255, 0.02);
     --glass-border: rgba(255, 255, 255, 0.05);
     --panel-bg: rgba(20, 20, 25, 0.6);
-    --font-heading: 'Clash Display', sans-serif;
+    --font-heading: 'Inter', sans-serif;
     --font-body: 'Inter', sans-serif;
     
     /* Spacing system */
@@ -224,10 +223,9 @@ a, button { cursor: none; }
 
 .hero-title {
     font-family: var(--font-heading);
-    font-size: clamp(4rem, 8vw, 8rem);
-    line-height: 1; font-weight: 600;
-    letter-spacing: -0.02em;
-    margin-bottom: var(--space-md);
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 1;
+    max-width: 600px;
 }
 
 .line-wrapper { display: block; overflow: hidden; }
@@ -584,4 +582,15 @@ a, button { cursor: none; }
     .divider { display: none; }
     .time-box { width: 45%; }
     .footer-bottom { flex-direction: column; text-align: center; justify-content: center; }
+}
+body {
+  font-family: 'Inter', sans-serif;
+}
+.hero-title {
+  max-width: 600px;
+}
+
+.line {
+  display: block;
+  line-height: 1.1;
 }
