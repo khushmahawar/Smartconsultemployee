@@ -13,10 +13,18 @@
     --font-body: 'Inter', sans-serif;
     
     /* Spacing system */
-    --space-sm: clamp(1rem, 2vw, 1.5rem);
-    --space-md: clamp(2rem, 4vw, 3rem);
-    --space-lg: clamp(4rem, 8vw, 6rem);
-    --space-xl: clamp(6rem, 12vw, 10rem);
+    --space-sm: clamp(0.75rem, 2vw, 1.5rem);
+    --space-md: clamp(1.25rem, 4vw, 3rem);
+    --space-lg: clamp(2.5rem, 6vw, 6rem);
+    --space-xl: clamp(3.5rem, 10vw, 10rem);
+}
+
+/* Stable root sizing — avoids mobile text inflation & host differences (e.g. Vercel vs localhost) */
+html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
 }
 
 * {
@@ -35,8 +43,12 @@ body {
     background-color: var(--bg-dark);
     color: var(--text-primary);
     font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.5;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     cursor: none;
 }
 
@@ -149,7 +161,8 @@ a, button { cursor: none; }
     width: 100%;
     max-width: 1536px;
     margin: 0 auto;
-    padding: 0 var(--space-md);
+    padding-left: max(var(--space-md), env(safe-area-inset-left));
+    padding-right: max(var(--space-md), env(safe-area-inset-right));
 }
 
 .section-padding {
@@ -162,6 +175,7 @@ a, button { cursor: none; }
 .navbar {
     position: fixed; top: 0; width: 100%;
     padding: var(--space-sm) 0;
+    padding-top: max(var(--space-sm), env(safe-area-inset-top));
     z-index: 100;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -171,7 +185,9 @@ a, button { cursor: none; }
 
 .nav-container {
     display: flex; justify-content: space-between; align-items: center;
-    max-width: 1536px; margin: 0 auto; padding: 0 var(--space-md);
+    max-width: 1536px; margin: 0 auto;
+    padding-left: max(var(--space-md), env(safe-area-inset-left));
+    padding-right: max(var(--space-md), env(safe-area-inset-right));
 }
 
 .logo {
@@ -201,8 +217,10 @@ a, button { cursor: none; }
 ========================================= */
 .hero {
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex; align-items: center;
     padding-top: 100px; /* Offset for nav */
+    padding-bottom: var(--space-md);
 }
 
 .hero-grid {
@@ -223,14 +241,16 @@ a, button { cursor: none; }
 
 .hero-title {
     font-family: var(--font-heading);
-    font-size: clamp(3rem, 8vw, 7rem);
+    /* Cap vw contribution so text stays balanced on phones & hosted builds */
+    font-size: clamp(2.25rem, 5vw + 0.75rem, 7rem);
     line-height: 1;
-    max-width: 600px;
+    max-width: min(600px, 100%);
 }
 
 .line-wrapper { display: block; overflow: hidden; }
 .line {
     display: inline-block;
+    line-height: 1.1;
     background: linear-gradient(180deg, #fff 0%, #a1a1aa 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -238,9 +258,9 @@ a, button { cursor: none; }
 }
 
 .hero-subtitle {
-    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    font-size: clamp(0.9375rem, 0.35rem + 1.25vw, 1.25rem);
     color: var(--text-secondary);
-    line-height: 1.6; max-width: 500px;
+    line-height: 1.6; max-width: min(500px, 100%);
     margin-bottom: var(--space-lg);
     opacity: 0;
 }
@@ -256,7 +276,8 @@ a, button { cursor: none; }
     padding: 20px 45px;
     border-radius: 50px;
     font-family: var(--font-body);
-    font-size: 1.05rem; font-weight: 500;
+    font-size: clamp(0.9375rem, 0.2rem + 1vw, 1.05rem);
+    font-weight: 500;
     border: none; overflow: hidden;
     display: inline-flex; align-items: center; justify-content: center;
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -358,7 +379,7 @@ a, button { cursor: none; }
 .time-box span {
     display: block;
     font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-size: clamp(1.75rem, 3vw + 0.5rem, 4rem);
     font-weight: 600;
     line-height: 1;
     margin-bottom: 8px;
@@ -373,7 +394,7 @@ a, button { cursor: none; }
 
 .divider {
     font-family: var(--font-heading);
-    font-size: clamp(2rem, 3vw, 3rem);
+    font-size: clamp(1.75rem, 2vw + 0.5rem, 3rem);
     color: var(--text-muted);
     transform: translateY(-10px);
 }
@@ -402,7 +423,7 @@ a, button { cursor: none; }
 .marquee-content {
     display: flex; align-items: center; gap: 40px;
     font-family: var(--font-heading);
-    font-size: clamp(3rem, 6vw, 6rem);
+    font-size: clamp(2rem, 5vw + 0.5rem, 6rem);
     font-weight: 600;
     color: transparent;
     -webkit-text-stroke: 1px rgba(255,255,255,0.2);
@@ -429,18 +450,18 @@ a, button { cursor: none; }
 
 .section-title {
     font-family: var(--font-heading);
-    font-size: clamp(3rem, 5vw, 5rem);
+    font-size: clamp(2rem, 4vw + 0.6rem, 5rem);
     font-weight: 600; margin-bottom: 24px;
 }
 
 .section-desc {
-    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    font-size: clamp(0.9375rem, 0.35rem + 1.25vw, 1.25rem);
     color: var(--text-secondary); line-height: 1.6;
 }
 
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: var(--space-md);
 }
 
@@ -462,7 +483,8 @@ a, button { cursor: none; }
 
 .glass-panel h3 {
     font-family: var(--font-heading);
-    font-size: 1.8rem; margin-bottom: 16px;
+    font-size: clamp(1.25rem, 0.5rem + 1.5vw, 1.8rem);
+    margin-bottom: 16px;
 }
 
 .glass-panel p {
@@ -492,7 +514,8 @@ a, button { cursor: none; }
 
 .parallax-text {
     font-family: var(--font-heading);
-    font-size: clamp(4rem, 10vw, 10rem);
+    font-size: clamp(2.25rem, 5vw + 1.5rem, 10rem);
+    padding: 0 clamp(0.5rem, 4vw, 2rem);
     font-weight: 700; color: #fff; text-align: center;
     mix-blend-mode: overlay; opacity: 0.8;
 }
@@ -512,7 +535,7 @@ a, button { cursor: none; }
 
 .massive-text {
     font-family: var(--font-heading);
-    font-size: clamp(5rem, 15vw, 15rem);
+    font-size: clamp(3rem, 8vw + 1.5rem, 15rem);
     font-weight: 700; line-height: 0.9;
     letter-spacing: -0.04em;
     background: linear-gradient(180deg, #fff 0%, #333 100%);
@@ -522,7 +545,8 @@ a, button { cursor: none; }
 }
 
 .footer-desc {
-    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-size: clamp(1rem, 0.35rem + 1.5vw, 1.5rem);
+    max-width: min(40ch, 100%);
     color: var(--text-secondary);
     margin-bottom: var(--space-lg);
 }
@@ -578,19 +602,49 @@ a, button { cursor: none; }
 }
 
 @media (max-width: 600px) {
-    .premium-timer { flex-wrap: wrap; gap: 10px; }
+    .premium-timer { flex-wrap: wrap; gap: 10px; justify-content: center; }
     .divider { display: none; }
-    .time-box { width: 45%; }
+    .time-box { width: 45%; min-width: 0; }
     .footer-bottom { flex-direction: column; text-align: center; justify-content: center; }
-}
-body {
-  font-family: 'Inter', sans-serif;
-}
-.hero-title {
-  max-width: 600px;
+    .marquee-content { gap: 24px; padding-right: 24px; }
+    .btn-large { padding: 1.125rem 2rem; font-size: 1.05rem; }
+    .visual-break { height: 60vh; min-height: 280px; }
 }
 
-.line {
-  display: block;
-  line-height: 1.1;
+/* Small phones: comfortable tap targets & readable copy */
+@media (max-width: 480px) {
+    .hero { padding-top: max(88px, env(safe-area-inset-top)); }
+    .logo { font-size: 1.25rem; }
+    .nav-btn-outline {
+        padding: 0.625rem 1.125rem;
+        font-size: 0.875rem;
+        min-height: 44px;
+    }
+    .btn {
+        min-height: 48px;
+        padding: 0.875rem 1.5rem;
+        width: 100%;
+        max-width: 100%;
+    }
+    .action-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+    .link-secondary { text-align: center; }
+    .card-icon { font-size: 2.25rem; }
+    .glass-panel { padding: clamp(1rem, 4vw, 1.5rem); }
+}
+
+@media (min-width: 481px) {
+    .btn { width: auto; max-width: none; }
+}
+
+/* Large viewports: avoid runaway vw scaling */
+@media (min-width: 1600px) {
+    html { font-size: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .glow-orb { animation: none !important; }
 }
