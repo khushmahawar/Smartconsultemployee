@@ -19,16 +19,13 @@ body {
   font-family: 'Space Grotesk', sans-serif;
   background: var(--bg);
   color: var(--text);
-
-  /* FIX */
-  min-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-
+  overflow: hidden;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 #success-canvas {
   position: fixed;
   top: 0;
@@ -56,11 +53,6 @@ body {
   box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8), var(--success-glow);
   position: relative;
   z-index: 10;
-
-}
-.container {
-  max-height: 90vh;
-  overflow-y: auto;
 }
 
 .success-icon-wrap {
@@ -135,50 +127,52 @@ h1 {
 .tagline b { color: var(--text); }
 
 .cyber-btn {
-  width: 100%;
-  padding: 1.2rem;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 255, 174, 0.3);
-
-  background: rgba(0, 255, 174, 0.1);
-  color: var(--primary);
-
-  font-weight: 700;
-  letter-spacing: 1px;
+  background: linear-gradient(135deg, #00ffae, #00f2fe);
+  color: black;
+  border: none;
+  padding: 1.25rem 3rem;
+  border-radius: 1rem;
+  font-weight: 800;
+  font-size: 1rem;
   cursor: pointer;
-
   position: relative;
   overflow: hidden;
-  transition: 0.3s ease;
-
-  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0,255,174,0.4);
+  transition: 0.3s;
 }
-
-/* Glow effect */
-.cyber-btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(0,255,174,0.4), transparent);
-  transform: translateX(-100%);
-  transition: 0.5s;
-}
-
-/* Hover */
-.cyber-btn:hover::before {
-  transform: translateX(100%);
+.cyber-btn {
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .cyber-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(0,255,174,0.4);
+  transform: scale(1.08);
+  box-shadow: 0 0 40px rgba(0,255,174,0.8);
 }
+
+.btn-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: 0.5s;
+}
+
+.cyber-btn:hover .btn-shine { left: 100%; }
+
 /* Mobile */
 @media (max-width: 600px) {
   .container { padding: 3rem 1.5rem; }
   h1 { font-size: 2.5rem; }
   .tagline { font-size: 1rem; }
-}.cyber-btn {
+}
+.btn-wrap {
+  display: flex;
+  justify-content: center;
+}
+.cyber-btn {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
