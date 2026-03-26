@@ -225,7 +225,7 @@ gsap.to('.parallax-image', {
 // ==========================================
 // TIMER LOGIC
 // ==========================================
-const deadline = new Date("2026-04-05T23:59:59").getTime();
+const deadline = new Date("2026-04-15T23:59:59").getTime();
 
 function updateTimer() {
   const now = new Date().getTime();
